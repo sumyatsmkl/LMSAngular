@@ -16,7 +16,7 @@
                                 </div>
                                 <small
                                     *ngIf="signUpForm.controls['userName'].dirty && signUpForm.hasError('required','userName')"
-                                    class="text-danger">*User name is required</small>
+                                    class="text-danger">*Required</small>
                             </div>
 
                             <div class="form-group pt-3">
@@ -27,8 +27,22 @@
                                 </div>
                                 <small
                                     *ngIf="signUpForm.controls['fullName'].dirty && signUpForm.hasError('required','fullName')"
-                                    class="text-danger">*Full name is required</small>
+                                    class="text-danger">*Required</small>
                             </div>           
+
+                            <div id="divIDType" class="form-group pt-3">
+                               
+                                <select formControlName="idType" [(ngModel)]="selectedIDType" class="form-control" (change)="getSelectedIDType($event)" >
+                                    <option value="" disabled selected>Choose ID Type</option>
+                                    <option *ngFor="let idType of idTypes" 
+                                               [ngValue]="idType" [value]="idType.codeValueId">
+                                               {{idType.codeValue}}
+                                    </option>
+                                </select>
+                                <small
+                                *ngIf="signUpForm.controls['idType'].dirty && signUpForm.hasError('required','idType')"
+                                class="text-danger">*Required</small>
+                              </div>
 
                             <div class="form-group pt-3">
                                 <div class="input-field"
@@ -38,7 +52,7 @@
                                 </div>
                                 <small
                                     *ngIf="signUpForm.controls['idNo'].dirty && signUpForm.hasError('required','idNo')"
-                                    class="text-danger">*Your ID No. or NRC No. is required</small>
+                                    class="text-danger">*Required</small>
                             </div>
 
                             <div class="form-group pt-3">
@@ -49,7 +63,7 @@
                                 </div>
                                 <small
                                     *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required','email')"
-                                    class="text-danger">*Email is required</small>
+                                    class="text-danger">*Required</small>
                             </div>
 
                           
@@ -62,9 +76,23 @@
                                 </div>
                                 <small
                                     *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')"
-                                    class="text-danger">*Password is required</small>
-                            </div>
+                                    class="text-danger">*Required</small>
+                            </div>                            
 
+                              <div id="divAccountType" class="form-group pt-3">
+                               
+                                <select formControlName="roleId" [(ngModel)]="selectedRoleId" class="form-control" (change)="getSelectedRole($event)">
+                                    <option value="" disabled selected>Choose User Account Type</option>
+                                    <option *ngFor="let role of roles" 
+                                               [ngValue]="role" [value]="role.roleId">
+                                               {{role.roleName}}
+                                    </option>
+                                </select>
+                                <small
+                                *ngIf="signUpForm.controls['roleId'].dirty && signUpForm.hasError('required','roleId')"
+                                class="text-danger">*Required</small>
+                              </div>
+                              
                             <button type="submit" (click)="onSignup()" class="btn btn-primary btn-block mt-4 w-100">Register</button>
                             <div class="text-center pt-4 text-muted" style="margin-top:20px;">Already have an account? <a
                                     id="forget" routerLink="/login">Login</a></div>
