@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import{ValidateForm} from 'src/app/helpers/validateform';
@@ -16,6 +16,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 
 export class LoginComponent implements OnInit {
+  accessToken:string ="";
   type:string = "password";
 isText:boolean=false;
 eyeIcon:string="fa-eye-slash"
@@ -56,9 +57,14 @@ onLogin(){
         next: (res) => {
           var statusCode = res.code;                   
             if(statusCode == Enumbase.Login_Success.toString())
-            {              
+            {  
               this.toastr.success(res.message);
-               this.loginForm.reset();
+              var loginResponse = res.data;             
+              this.accessToken= loginResponse.accessToken;
+              console.log(this.accessToken);
+              this.auth.setToken(this.accessToken);             
+            
+               //this.loginForm.reset();
                this.router.navigate(['/dashboard']);   
             }
             else{              
