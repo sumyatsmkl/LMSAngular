@@ -1,1 +1,9 @@
-<p>Welcome to Dashboard!</p>
+<button (click)="logOut()" class="btn btn-danger" style="margin-left:10px;">Log out</button>
+
+
+<p style="margin-left:10px;">Welcome to Dashboard!</p>
+
+
+<ul *ngFor="let role of roles" style="margin-left:10px;">
+    <li>{{role.roleName}}</li>
+</ul>
