@@ -25,7 +25,6 @@ export class TokenInterceptor implements HttpInterceptor {
     let expiredDate: any = this.authService.getTokenExpired();    
      var currentUTCDateTime = formatDate(new Date(),'yyyy-MM-dd hh:mm:ss','en','+0000');    
      if(generatedToken!=null && expiredDate > currentUTCDateTime) {  
-      alert('token expired date is greater than current datetime' + generatedToken + " and " + expiredDate + " and " + currentUTCDateTime);   
          request = request.clone({
              setHeaders: {
                  Authorization: `Bearer ${generatedToken}`
