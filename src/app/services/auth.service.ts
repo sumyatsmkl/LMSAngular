@@ -19,8 +19,10 @@ private baseUrl: string = "http://localhost:5185/api";
   }
 
   logout(){
-    localStorage.clear();
-    this.router.navigate(['login']); 
+    localStorage.clear();   
+    localStorage.removeItem('token');
+    localStorage.removeItem('tokenExpiredDate');
+    this.router.navigate(['/login']); 
   }
 
   getAllowSelfRegisterRoles(){

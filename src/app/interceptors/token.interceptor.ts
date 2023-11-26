@@ -36,12 +36,9 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((err:any)=>{
          if(err instanceof HttpErrorResponse){
            if(err.status === 401){
-            if(generatedToken){
-              alert(generatedToken);
-              request = request.clone({
-                setHeaders: {Authorization:`Bearer ${generatedToken}`}  // "Bearer "+myToken
-              })
-            }                    
+            this.authService.logout();
+            this.toastr.warning("Your session has expired.Please login again.","Session Expired");
+            this.router.navigate(['/login']);                             
            }
          }
          return throwError(()=> err)
