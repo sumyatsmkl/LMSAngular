@@ -21,7 +21,7 @@ export const navbarData: INavbarData[] =[
         },
         {
             routeLink: 'setup/salutation',
-            label: 'Marital Status',
+            label: 'Salutation',
         }
     ]
 },

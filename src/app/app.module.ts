@@ -15,6 +15,7 @@ import { BodyComponent } from './components/body/body.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SetupComponent } from './components/setup/setup.component';
 import { ManageuserComponent } from './components/manageuser/manageuser.component';
+import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ManageuserComponent } from './components/manageuser/manageuser.componen
     SidenavComponent,  
     SetupComponent,
     ManageuserComponent,
+    SublevelMenuComponent,
   ],
   imports: [
     BrowserModule,
