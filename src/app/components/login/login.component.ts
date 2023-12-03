@@ -22,10 +22,12 @@ isText:boolean=false;
 eyeIcon:string="fa-eye-slash"
 loginForm!: FormGroup;
 constructor(private fb:FormBuilder, private auth: AuthService, private router: Router, 
-  private toastr : ToastrService,private spinner:NgxSpinnerService){}
+  private toastr : ToastrService,private spinner:NgxSpinnerService){
+    localStorage.removeItem('token');
+  }
 
 ngOnInit():void{
-  localStorage.removeItem('token');
+  
   this.loginForm = this.fb.group({
     userName: ['', Validators.required],
     password: ['', Validators.required],
