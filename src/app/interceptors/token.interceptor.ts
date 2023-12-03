@@ -31,10 +31,14 @@ export class TokenInterceptor implements HttpInterceptor {
              }
          });
      }
+     if(expiredDate < currentUTCDateTime){
+      localStorage.removeItem('token');
+     }
 
     return next.handle(request).pipe(
-      catchError((err:any)=>{
+      catchError((err:any)=>{        
          if(err instanceof HttpErrorResponse){
+          localStorage.removeItem('token');
            if(err.status === 401){
             this.authService.logout();
             this.toastr.warning("Your session has expired.Please login again.","Session Expired");
