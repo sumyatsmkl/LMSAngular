@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
+interface SideNavToggle {
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,15 +14,29 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent {
   title = 'LMSAngular';
+  isSideNavCollapsed = false;
+  screenWidth = 0;
 
-  constructor(private toastr:ToastrService
- 
-  ){}
-
-  ngOnInit():void{
-
+  constructor(private authService: AuthService) {
+    this.validateIsLogin();
   }
-showToaster(){
-  this.toastr.success("Hello, This is LMS Angular App.")
-}
+
+  onToggleSideNav(data: SideNavToggle): void {
+    this.screenWidth = data.screenWidth;
+    this.isSideNavCollapsed = data.collapsed;
+  }
+
+  validateIsLogin():boolean{   
+    var accessToken = this.authService.getToken(); 
+    let isLogIn :boolean = false;       
+    if(accessToken == null)
+    {
+      isLogIn = false;
+    }
+    else{
+      isLogIn = true;
+    }   
+    return isLogIn;
+  }
+ 
 }

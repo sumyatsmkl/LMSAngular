@@ -11,13 +11,23 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { BodyComponent } from './components/body/body.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SetupComponent } from './components/setup/setup.component';
+import { ManageuserComponent } from './components/manageuser/manageuser.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    BodyComponent,
+    SidenavComponent,  
+    SetupComponent,
+    ManageuserComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

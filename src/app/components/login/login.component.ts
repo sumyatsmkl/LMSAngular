@@ -52,7 +52,7 @@ onLogin(){
 
     this.auth.login(this.loginForm.value)
       .subscribe({
-        next: (res) => {
+        next: (res) => {         
           localStorage.removeItem('token');
           var statusCode = res.code;                   
             if(statusCode == Enumbase.Login_Success.toString())
@@ -67,7 +67,7 @@ onLogin(){
               this.toastr.warning(res.message);
             }
         },
-        error: (err) => {
+        error: (err) => {          
           this.toastr.error(err?.error.message);
         }
       })
