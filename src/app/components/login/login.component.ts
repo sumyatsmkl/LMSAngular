@@ -25,6 +25,7 @@ constructor(private fb:FormBuilder, private auth: AuthService, private router: R
   private toastr : ToastrService,private spinner:NgxSpinnerService){}
 
 ngOnInit():void{
+  localStorage.removeItem('token');
   this.loginForm = this.fb.group({
     userName: ['', Validators.required],
     password: ['', Validators.required],
@@ -52,8 +53,8 @@ onLogin(){
 
     this.auth.login(this.loginForm.value)
       .subscribe({
-        next: (res) => {         
-          localStorage.removeItem('token');
+        next: (res) => {        
+         
           var statusCode = res.code;                   
             if(statusCode == Enumbase.Login_Success.toString())
             {  

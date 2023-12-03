@@ -10,20 +10,20 @@ export const navbarData: INavbarData[] =[
     routeLink: '/setup',
     icon: 'fal fa-cog',
     label: 'Setup',
-    // items:[
-    //     {
-    //         routeLink: 'setup/language',
-    //         label: 'Language',
-    //     },
-    //     {
-    //         routeLink: 'setup/salutation',
-    //         label: 'Salutation',
-    //     },
-    //     {
-    //         routeLink: 'setup/maritalstatus',
-    //         label: 'Marital Status',
-    //     }
-    // ]
+    items:[
+        {
+            routeLink: 'setup/language',
+            label: 'Language',
+        },
+        {
+            routeLink: 'setup/country',
+            label: 'Salutation',
+        },
+        {
+            routeLink: 'setup/salutation',
+            label: 'Marital Status',
+        }
+    ]
 },
 {
     routeLink: '/manageuser',
